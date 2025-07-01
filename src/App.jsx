@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react'
 
 import './App.css'
+import useToggle from './CustomHook/useToggle';
 
 function App() {
  
 
   const [user,SetUser] = useState({name:"Test",age:30})
 
+
+
+    const [isOn, toggle] = useToggle();
+    
 
   //No dependencies
   // Its runs after every render
@@ -45,12 +50,22 @@ console.log("With dependencies")
       <button onClick={() => setFirst((count) => count + 1)}>
           count is {First}
         </button>
+        <br/>
+         <br/>
 
         <button onClick={() => setSecond((count1) => count1 + 1)}>
           count One is {Second}
         </button>
+ <br/>
+  <br/>
+       
+        <button onClick={toggle}>
+        {isOn ? '🔴 ON' : '⚪ OFF'}
+        </button>
+
 
        
+
     </>
   )
 }
